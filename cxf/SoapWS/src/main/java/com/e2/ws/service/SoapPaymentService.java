@@ -8,7 +8,7 @@ import javax.jws.WebParam.Mode;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.Style;
 
-@WebService(targetNamespace = "com.e2.ws.service", name = "payment")
+@WebService(targetNamespace = "com.e2.ws.service.payment", name = "payment")
 @SOAPBinding(style = Style.DOCUMENT)
 public interface SoapPaymentService {
 	

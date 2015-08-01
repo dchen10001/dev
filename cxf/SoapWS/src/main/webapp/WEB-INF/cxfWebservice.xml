@@ -16,4 +16,13 @@
 	<jaxws:endpoint id="payment" implementor="#soapPaymentServiceImpl"
 		address="/paymentService" />
 
+	<jaxws:endpoint id="bookShelf" implementor="#soapBookShelfServiceImpl"
+		address="/bookShelfService" />
+
+    <jaxrs:server id="bookShelfRest" address="/bookShelfServiceRest">
+        <jaxrs:serviceBeans>
+        <ref bean="restBookService" />
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+    
 </beans>

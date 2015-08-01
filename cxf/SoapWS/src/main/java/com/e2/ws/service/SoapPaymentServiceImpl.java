@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.e2.service.PaymentService;
 
 @Service("soapPaymentServiceImpl")
-@WebService(endpointInterface = "com.e2.ws.service.SoapPaymentService", targetNamespace = "com.e2.ws.service", name = "payment")
+@WebService(endpointInterface = "com.e2.ws.service.SoapPaymentService", serviceName = "paymentService")
 public class SoapPaymentServiceImpl implements SoapPaymentService {
 
 	//@Resource(name="paymentServiceImpl")
