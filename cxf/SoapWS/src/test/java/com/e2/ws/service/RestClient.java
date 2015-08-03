@@ -17,9 +17,9 @@ public class RestClient {
 	public static void main(String[] args) {
 		RestClient client = new RestClient();
 		try {
-			//client.addBook("Foundation and Earth", "Issac Asimov");
-			//client.addBook("Foundation and Empire", "Issac Asimov");
-			//client.addBook("Rama Revealed", "Arthur C Clarke");
+			client.addBook("Foundation and Earth", "Issac Asimov");
+			client.addBook("Foundation and Empire", "Issac Asimov");
+			client.addBook("Rama Revealed", "Arthur C Clarke");
 
 			client.getBook("Rama Revealed");
 			
@@ -60,8 +60,8 @@ public class RestClient {
              HttpClient client = new HttpClient(); 
              PostMethod mPost = new PostMethod(addURL); 
 
-             mPost.addParameter("name", "Naked Sun"); 
-             mPost.addParameter("author", "Issac Asimov"); 
+             mPost.addParameter("name", bookName); 
+             mPost.addParameter("author", author); 
              Header mtHeader = new Header(); 
              mtHeader.setName("content-type"); 
              mtHeader.setValue("application/x-www-form-urlencoded"); 
