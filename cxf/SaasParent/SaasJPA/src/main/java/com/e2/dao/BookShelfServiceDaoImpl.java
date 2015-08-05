@@ -1,7 +1,10 @@
 package com.e2.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
@@ -32,5 +35,19 @@ public class BookShelfServiceDaoImpl implements BookShelfServiceDao {
 	@Override
 	public Book getBookById(long bookId) {
 		return entityManager.find(Book.class, bookId);
+	}
+
+	@Override
+	public void removeBookById(long bookId) {
+		Book book = entityManager.getReference(Book.class, bookId);
+		entityManager.remove(book);
+		entityManager.flush();
+	}
+
+	@Override
+	public List<Long> getBookIds() {
+    	Query q = entityManager.createQuery("SELECT b.bookId FROM Book b");
+    	List<Long> result = (List<Long>)q.getResultList();
+    	return result;
 	}
 }

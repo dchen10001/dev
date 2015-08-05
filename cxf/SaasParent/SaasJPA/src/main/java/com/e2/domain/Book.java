@@ -31,12 +31,12 @@ public class Book implements Serializable {
 	private String author; 
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "CREATED_DATE", updatable = false, nullable=false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	@Column(name = "CREATED_DATE", updatable = false, insertable = false, nullable=false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Date createdDate;
 	
     @Version
     @Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "MODIFIED_DATE", updatable = true, insertable = false, nullable=false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	@Column(name = "MODIFIED_DATE", insertable = false, nullable=false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date modifiedDate;
     
     public Book() {

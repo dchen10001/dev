@@ -1,5 +1,9 @@
 package com.e2.dao;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.annotation.Resource;
 
 import org.junit.FixMethodOrder;
@@ -10,10 +14,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import com.e2.domain.Book;
 
-@TransactionConfiguration(defaultRollback = true)
+@TransactionConfiguration(defaultRollback = false)
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:/app-test-context.xml"})
 @Transactional
@@ -27,21 +32,34 @@ public class BookShelfServiceDaoTest {
 	
 	@Test
 	public void addBook() {
-		Book book = new Book();
-		book.setAuthor("Issac Asimov"); 
-		book.setBookName("Foundation and Earth"); 
-		long result = bookShelfServiceDao.persisten(book); 
-
-		book = new Book(); 
-		book.setAuthor("Issac Asimov"); 
-		book.setBookName("Foundation and Empire"); 
-		result = bookShelfServiceDao.persisten(book); 
-
-
-		book = new Book(); 
-		book.setAuthor("Arthur C Clarke"); 
-		book.setBookName("Rama Revealed"); 
-		result = bookShelfServiceDao.persisten(book); 
+		Book[] books = BookTestData.getBooks();
 		
+		Set<Long> pks = new HashSet<Long>();
+		for(Book book : books) {
+			long pk = bookShelfServiceDao.persisten(book); 
+			pks.add(pk);
+		}
+		
+		for(Long pk : pks) {
+			Book book = bookShelfServiceDao.getBookById(pk);
+			Assert.notNull(book);
+		}
 	}	
+	
+	@Test
+	public void getBookAndUpdate() {
+		for(String title : BookTestData.titiles) {
+			Book book = bookShelfServiceDao.getBookByTitle(title);
+			book.setAuthor(book.getAuthor() + "-changed");
+			Assert.notNull(book);
+		}
+	}
+	
+	@Test
+	public void removeBook() {
+		List<Long> pks = bookShelfServiceDao.getBookIds();
+		for(Long pk : pks) {
+			bookShelfServiceDao.removeBookById(pk);
+		}
+	}
 }
