@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @SuppressWarnings("serial")
 @XmlRootElement(name = "Book")
-public class BookVO {//implements Serializable {
+public class BookVO implements Serializable {
 
 	private long bookId; 
 	
