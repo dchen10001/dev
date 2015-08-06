@@ -305,8 +305,15 @@
 				<groupId>postgresql</groupId>
 				<artifactId>postgresql</artifactId>
 				<version>9.1-901-1.jdbc4</version>
+				<scope>provided</scope>
 			</dependency>
 			
+  	<dependency>
+	    <groupId>com.e2.demo</groupId>
+		<artifactId>SaasJPA</artifactId>  
+		<version>0.0.1-SNAPSHOT</version>	
+  	</dependency>
+  				
 		</dependencies>
 	</dependencyManagement>
 	
@@ -337,9 +344,30 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-aspects</artifactId>
-            </dependency>			
+            </dependency>	
+            
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+        </dependency>     
+        
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+        </dependency>     
+        
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>            		
 		</dependencies>	
 		  <modules>
 		    <module>SaasJPA</module>
-		  </modules>
+    <module>SaasService</module>
+  </modules>
 </project>
