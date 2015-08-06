@@ -23,15 +23,25 @@ public class BookShelfServiceImpl implements BookShelfService {
 	}
 
 	@Override
-	public BookVO getBook(String title) {
-		synchronized (dbStore) {
-			for(BookVO bookVO : dbStore) {
-				if(bookVO.getBookName().equalsIgnoreCase(title)) {
-					return bookVO;
-				}
-			}
-		}
+	public BookVO getBookByTitle(String title) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
+	public BookVO getBookById(long bookId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateBook(long bookId, String auther, String title) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeBook(long bookId) {
+		// TODO Auto-generated method stub	
+	}
 }

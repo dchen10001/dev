@@ -19,9 +19,10 @@ public class RestClient {
 		try {
 			client.addBook("Foundation and Earth", "Issac Asimov");
 			client.addBook("Foundation and Empire", "Issac Asimov");
-			client.addBook("Rama Revealed", "Arthur C Clarke");
+			client.addBookJSON("Rama Revealed", "Arthur C Clarke");
+			client.getBookXML("Rama Revealed");
 
-			client.getBook("Rama Revealed");
+			client.getBookJSON("Rama Revealed");
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -30,18 +31,20 @@ public class RestClient {
 	
 	}
 
-	public String getBook(String bookName) throws Exception { 
+	public String getBookJSON(String bookName) throws Exception { 
          String output = null; 
          try{ 
         	 String restURL = getURL + URLEncoder.encode(bookName, "UTF-8"); 
              HttpClient client = new HttpClient(); 
+             
              PostMethod mPost = new PostMethod(restURL); 
-             client.executeMethod( mPost ); 
+             //client.executeMethod( mPost ); 
              Header mtHeader = new Header(); 
              mtHeader.setName("content-type"); 
              mtHeader.setValue("application/x-www-form-urlencoded"); 
              mtHeader.setName("accept"); 
-             mtHeader.setValue("application/xml"); 
+             mtHeader.setValue("application/json"); 
+             //mtHeader.setValue("/"); 
              mPost.addRequestHeader(mtHeader); 
 
              client.executeMethod(mPost); 
@@ -53,6 +56,30 @@ public class RestClient {
              throw new Exception("Exception in retriving group page info : " + e); 
          } 
      } 
+	
+	public String getBookXML(String bookName) throws Exception { 
+		String output = null; 
+		try{ 
+			String restURL = getURL + URLEncoder.encode(bookName, "UTF-8"); 
+			HttpClient client = new HttpClient(); 
+			PostMethod mPost = new PostMethod(restURL); 
+			//client.executeMethod( mPost ); 
+			Header mtHeader = new Header(); 
+			mtHeader.setName("content-type"); 
+			mtHeader.setValue("application/x-www-form-urlencoded"); 
+			mtHeader.setName("accept"); 
+			mtHeader.setValue("application/xml"); 
+			mPost.addRequestHeader(mtHeader); 
+			
+			client.executeMethod(mPost); 
+			output = mPost.getResponseBodyAsString( ); 
+			mPost.releaseConnection( ); 
+			System.out.println("out : " + output); 
+			return output; 
+		} catch(Exception e){ 
+			throw new Exception("Exception in retriving group page info : " + e); 
+		} 
+	} 
 
      public void addBook(String bookName, String author) throws Exception { 
          String output = null; 
@@ -76,5 +103,29 @@ public class RestClient {
          } catch(Exception e) { 
         	 throw new Exception("Exception in adding bucket : " + e); 
          } 
+     } 	
+     
+     public void addBookJSON(String bookName, String author) throws Exception { 
+    	 String output = null; 
+    	 try{ 
+    		 HttpClient client = new HttpClient(); 
+    		 PostMethod mPost = new PostMethod(addURL); 
+    		 
+    		 mPost.addParameter("name", bookName); 
+    		 mPost.addParameter("author", author); 
+    		 Header mtHeader = new Header(); 
+    		 mtHeader.setName("content-type"); 
+    		 mtHeader.setValue("application/x-www-form-urlencoded"); 
+    		 mtHeader.setName("accept"); 
+    		 mtHeader.setValue("application/json"); 
+    		 mPost.addRequestHeader(mtHeader); 
+    		 
+    		 client.executeMethod(mPost); 
+    		 output = mPost.getResponseBodyAsString( ); 
+    		 mPost.releaseConnection( ); 
+    		 System.out.println("output : " + output); 
+    	 } catch(Exception e) { 
+    		 throw new Exception("Exception in adding bucket : " + e); 
+    	 } 
      } 	
 }

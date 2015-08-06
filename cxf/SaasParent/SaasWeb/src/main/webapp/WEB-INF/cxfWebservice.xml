@@ -2,24 +2,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:jaxws="http://cxf.apache.org/jaxws"
     xmlns:jaxrs="http://cxf.apache.org/jaxrs"
-     xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 						http://www.springframework.org/schema/beans/spring-beans.xsd
 						http://cxf.apache.org/jaxrs
 						http://cxf.apache.org/schemas/jaxrs.xsd
 						http://cxf.apache.org/jaxws
-						http://cxf.apache.org/schemas/jaxws.xsd
-						http://cxf.apache.org/transports/http/configuration
-           				http://cxf.apache.org/schemas/configuration/http-conf.xsd">    
-    
+						http://cxf.apache.org/schemas/jaxws.xsd">
+
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
-	<!-- 
 	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
-	 -->
-
-
-	<bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>	
 
 	<jaxws:endpoint id="payment" implementor="#soapPaymentServiceImpl"
 		address="/paymentService" />
@@ -29,11 +21,8 @@
 
     <jaxrs:server id="bookShelfRest" address="/bookShelfServiceRest">
         <jaxrs:serviceBeans>
-        	<ref bean="restBookService" />
+        <ref bean="restBookService" />
         </jaxrs:serviceBeans>
-		<jaxrs:providers>
-		    <ref bean='jsonProvider'/>
-		</jaxrs:providers>
     </jaxrs:server>
     
 </beans>
