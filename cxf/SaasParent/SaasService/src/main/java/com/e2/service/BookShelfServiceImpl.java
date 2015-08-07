@@ -5,7 +5,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.e2.dao.BookShelfServiceDao;
 import com.e2.domain.Book;
-import com.e2.vo.BookVO;
 
 @Service("bookShelfServiceImpl")
 @Transactional
@@ -14,22 +13,19 @@ public class BookShelfServiceImpl implements BookShelfService {
 	private BookShelfServiceDao dao;
 
 	@Override
-	public long insertBook(BookVO bookVO) {
-		Book book = new Book();
-		book.setAuthor(bookVO.getAuthor());
-		book.setBookName(bookVO.getBookName());
+	public long insertBook(Book book) {
 		dao.persisten(book);
 		return book.getBookId();
 	}
 
 	@Override
-	public BookVO getBookByTitle(String title) {
-		// TODO Auto-generated method stub
-		return null;
+	public Book getBookByTitle(String title) {
+		Book book = dao.getBookByTitle(title);
+		return book;
 	}
 
 	@Override
-	public BookVO getBookById(long bookId) {
+	public Book getBookById(long bookId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

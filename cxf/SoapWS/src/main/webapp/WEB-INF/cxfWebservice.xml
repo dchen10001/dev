@@ -13,13 +13,13 @@
            				http://cxf.apache.org/schemas/configuration/http-conf.xsd">    
     
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
-	<!-- 
 	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
-	 -->
-
 
 	<bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>	
+
+    <bean id="jaxbJSONProvider" class="org.apache.cxf.jaxrs.provider.json.JSONProvider">
+    </bean>
 
 	<jaxws:endpoint id="payment" implementor="#soapPaymentServiceImpl"
 		address="/paymentService" />
@@ -32,7 +32,7 @@
         	<ref bean="restBookService" />
         </jaxrs:serviceBeans>
 		<jaxrs:providers>
-		    <ref bean='jsonProvider'/>
+		    <ref bean="jaxbJSONProvider"/>
 		</jaxrs:providers>
     </jaxrs:server>
     

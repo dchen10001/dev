@@ -1,14 +1,14 @@
 package com.e2.service;
 
-import com.e2.vo.BookVO;
+import com.e2.domain.Book;
 
 public interface BookShelfService {
 
-	public  long insertBook(BookVO bookVO); 
+	public  long insertBook(Book book); 
 
-	public  BookVO getBookByTitle(String title); 
+	public  Book getBookByTitle(String title); 
 
-	public  BookVO getBookById(long bookId); 
+	public  Book getBookById(long bookId); 
 	
 	public void updateBook(long bookId, String auther, String title);
 	

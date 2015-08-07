@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.e2.domain.Book;
 import com.e2.service.BookShelfService;
 import com.e2.vo.BookVO;
 
@@ -20,12 +21,22 @@ public class SoapBookShelfServiceImpl implements SoapBookShelfService {
 	
 	@Override
 	public long insertBook(BookVO bookVO) {
-		return bookService.insertBook(bookVO);
+		Book book = new Book(bookVO.getBookName(), bookVO.getAuthor());
+		return bookService.insertBook(book);
 	}
 
 	@Override
 	public BookVO getBook(String title) {
-		return bookService.getBookByTitle(title);
+		Book book = bookService.getBookByTitle(title);
+		
+		BookVO bookVO = null;
+		if(book != null) {
+			bookVO = new BookVO();
+			bookVO.setBookName(book.getBookName());
+			bookVO.setAuthor(book.getAuthor());
+			bookVO.setBookId(book.getBookId());
+		}
+		return bookVO;
 	}
 
 }

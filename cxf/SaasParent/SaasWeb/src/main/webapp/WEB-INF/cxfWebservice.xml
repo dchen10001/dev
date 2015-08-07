@@ -13,16 +13,21 @@
 	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
 
-	<jaxws:endpoint id="payment" implementor="#soapPaymentServiceImpl"
-		address="/paymentService" />
+	<bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>	
+
+    <bean id="jaxbJSONProvider" class="org.apache.cxf.jaxrs.provider.json.JSONProvider">
+    </bean>
 
 	<jaxws:endpoint id="bookShelf" implementor="#soapBookShelfServiceImpl"
 		address="/bookShelfService" />
 
     <jaxrs:server id="bookShelfRest" address="/bookShelfServiceRest">
         <jaxrs:serviceBeans>
-        <ref bean="restBookService" />
+        	<ref bean="restBookService" />
         </jaxrs:serviceBeans>
+		<jaxrs:providers>
+		    <ref bean="jaxbJSONProvider"/>
+		</jaxrs:providers>        
     </jaxrs:server>
     
 </beans>

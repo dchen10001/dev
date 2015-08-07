@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.e2.domain.Book;
 import com.e2.service.BookShelfService;
 import com.e2.vo.BookVO;
 
@@ -33,7 +34,13 @@ public class RSBookService {
 	public Response getBucket(@PathParam("name") String name) {
 		BookVO bookVO = null;
 		try {
-			bookVO = bookService.getBookByTitle(URLDecoder.decode(name, "UTF-8"));
+			Book book = bookService.getBookByTitle(URLDecoder.decode(name, "UTF-8"));
+			if(book != null) {
+			    bookVO = new BookVO();
+				bookVO.setBookName(book.getBookName());
+				bookVO.setAuthor(book.getAuthor());
+				bookVO.setBookId(book.getBookId());
+			}
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace(); 
 		}
@@ -52,12 +59,16 @@ public class RSBookService {
 			"application/x-www-form-urlencoded" })
 	public Response addBook(@FormParam("name") String bookName,
 			@FormParam("author") String author) {
+		
+		Book book = new Book(bookName, author);
+
+		long bookId = bookService.insertBook(book);
+		
 		BookVO bookVO = new BookVO();
 		bookVO.setBookName(bookName);
 		bookVO.setAuthor(author);
-
-		bookService.insertBook(bookVO);
-
+		bookVO.setBookId(bookId);
+		
 		if (bookService.getBookByTitle(bookName) == null) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		} else {
