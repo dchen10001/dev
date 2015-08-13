@@ -47,6 +47,9 @@
     <bean id="emDemo" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
     	<property name="persistenceUnitName" value="SaasJPA"/>
         <property name="dataSource" ref="demoDS" />
+        <!-- 
+        <property name="jtaDataSource" ref="demoDS" />
+         -->        
 		<property name="loadTimeWeaver">
     		<bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
   		</property>
@@ -56,6 +59,9 @@
 		<property name="jpaProperties" ref="demoHibernateProperties"/>          
     </bean>
 
+	<!-- 
+	<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager"/>  
+	 -->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" 
 		p:entityManagerFactory-ref="emDemo"/>  
 		

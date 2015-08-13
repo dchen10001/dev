@@ -16,6 +16,6 @@
 	<context:spring-configured />
 	<context:annotation-config />	
   	
-	<context:component-scan base-package="com.e2.dao" />	
+	<context:component-scan base-package="com.e2.dao.jpa" />	
 	<import resource="test-db-context.xml"/>
 </beans>

@@ -1,4 +1,4 @@
-package com.e2.dao;
+package com.e2.dao.jpa;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
+import com.e2.dao.BookShelfServiceDao;
 import com.e2.domain.Book;
 
 @Repository("bookShelfServiceDaoImpl")
