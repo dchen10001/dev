@@ -6,6 +6,27 @@
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	<!-- scan service in the package -->
+
+	<bean 
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location">
+            <value>classpath:/application.properties</value>
+        </property>
+    </bean>
+	
+	<context:spring-configured />
+	<context:annotation-config />	
+  	
+  	<!-- 
+	<context:component-scan base-package="com.e2.dao.hibernate"/>
+  	 -->
+	<context:component-scan base-package="com.e2.dao.jpa"/>
+		
 	<context:component-scan base-package="com.e2.service" />
 	<context:component-scan base-package="com.e2.ws.service" />
+	
+	<!-- 
+	     <import resource="hibernate/database-context.xml"/>
+	 -->
+    <import resource="jpa/database-context.xml"/>
 </beans>

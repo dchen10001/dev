@@ -1,5 +1,7 @@
 package com.e2.service;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,6 +12,7 @@ import com.e2.domain.Book;
 @Transactional
 public class BookShelfServiceImpl implements BookShelfService {
 	
+	@Resource
 	private BookShelfServiceDao dao;
 
 	@Override
