@@ -71,4 +71,11 @@ public class BookShelfServiceDaoHibernateImpl implements BookShelfServiceDao {
 		return (List<Long>)q.list();
 	}
 
+	@Override
+	public List<Book> getBooks() {
+		Session session = getSession();
+		Query q = session.createQuery("SELECT b FROM Book b");
+		return (List<Book>)q.list();
+	}
+
 }

@@ -29,4 +29,6 @@
 	     <import resource="hibernate/database-context.xml"/>
 	 -->
     <import resource="jpa/database-context.xml"/>
+    
+	<import resource="cxfWebservice.xml"/>
 </beans>

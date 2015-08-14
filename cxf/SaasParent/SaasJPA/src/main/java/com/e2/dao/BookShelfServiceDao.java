@@ -11,4 +11,5 @@ public interface BookShelfServiceDao {
 	public void removeBookById(long bookId);
 	
 	public List<Long> getBookIds();
+	public List<Book> getBooks();
 }

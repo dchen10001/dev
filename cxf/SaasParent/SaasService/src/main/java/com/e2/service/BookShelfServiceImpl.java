@@ -1,5 +1,7 @@
 package com.e2.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -42,5 +44,11 @@ public class BookShelfServiceImpl implements BookShelfService {
 	@Override
 	public void removeBook(long bookId) {
 		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public List<Book> getBooks() {
+		// TODO Auto-generated method stub
+		return dao.getBooks();
 	}
 }

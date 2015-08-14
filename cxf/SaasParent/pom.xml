@@ -315,8 +315,36 @@
 				<artifactId>SaasService</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
-
+				<!--  structs -->
+			<dependency>
+			  <groupId>org.springframework</groupId>
+			  <artifactId>spring-struts</artifactId>
+			  <version>3.2.9.RELEASE</version>
+			  <exclusions>
+			  	<exclusion>
+			  		<artifactId>spring-web</artifactId>
+			  		<groupId>org.springframework</groupId>
+			  	</exclusion>
+			  	<exclusion>
+			  		<artifactId>spring-core</artifactId>
+			  		<groupId>org.springframework</groupId>
+			  	</exclusion>
+			  	<exclusion>
+			  		<artifactId>spring-context</artifactId>
+			  		<groupId>org.springframework</groupId>
+			  	</exclusion>
+			  	<exclusion>
+			  		<artifactId>spring-webmvc</artifactId>
+			  		<groupId>org.springframework</groupId>
+			  	</exclusion>
+			  	<exclusion>
+			  		<artifactId>spring-beans</artifactId>
+			  		<groupId>org.springframework</groupId>
+			  	</exclusion>
+			  </exclusions>
+			</dependency>		
 		</dependencies>
+		
 	</dependencyManagement>
 
 	<dependencies>

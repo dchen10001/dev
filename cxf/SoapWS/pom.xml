@@ -49,31 +49,75 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- Spring dependencies -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
- 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
- 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<!-- 
-		 <dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-webmvc</artifactId>
-		    <version>${spring.version}</version>
-		 </dependency>
-		 -->		
+			<!-- Spring dependencies -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aspects</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<!-- AOP -->
+			<dependency>
+				<groupId>aopalliance</groupId>
+				<artifactId>aopalliance</artifactId>
+				<version>1.0</version>
+			</dependency>
+
+			<!-- aspectjweaver.jar is an AspectJ library needed for LTW (load-time 
+				weaving), as opposed to compile-time weaving. -->
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>1.6.10</version>
+			</dependency>	
 		
 		<!-- cxf dependencies		 -->
 
@@ -154,6 +198,34 @@
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-jaxrs</artifactId>
 			<version>1.9.13</version>
-		</dependency>		
+		</dependency>
+	<dependency>
+	  <groupId>org.springframework</groupId>
+	  <artifactId>spring-struts</artifactId>
+	  <version>3.2.9.RELEASE</version>
+	  <exclusions>
+	  	<exclusion>
+	  		<artifactId>spring-web</artifactId>
+	  		<groupId>org.springframework</groupId>
+	  	</exclusion>
+	  	<exclusion>
+	  		<artifactId>spring-core</artifactId>
+	  		<groupId>org.springframework</groupId>
+	  	</exclusion>
+	  	<exclusion>
+	  		<artifactId>spring-context</artifactId>
+	  		<groupId>org.springframework</groupId>
+	  	</exclusion>
+	  	<exclusion>
+	  		<artifactId>spring-webmvc</artifactId>
+	  		<groupId>org.springframework</groupId>
+	  	</exclusion>
+	  	<exclusion>
+	  		<artifactId>spring-beans</artifactId>
+	  		<groupId>org.springframework</groupId>
+	  	</exclusion>
+	  </exclusions>
+	</dependency>
+				
 	</dependencies>
 </project>

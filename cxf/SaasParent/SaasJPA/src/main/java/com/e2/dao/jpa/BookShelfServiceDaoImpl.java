@@ -51,4 +51,11 @@ public class BookShelfServiceDaoImpl implements BookShelfServiceDao {
     	List<Long> result = (List<Long>)q.getResultList();
     	return result;
 	}
+
+	@Override
+	public List<Book> getBooks() {
+    	TypedQuery<Book> q = entityManager.createQuery("SELECT b FROM Book b", Book.class);
+    	List<Book> result = q.getResultList();
+    	return result;
+	}
 }

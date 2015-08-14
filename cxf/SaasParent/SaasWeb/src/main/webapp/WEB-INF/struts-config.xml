@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+ 
+<struts-config>
+	<form-beans>
+		<form-bean name="bookForm" type="com.e2.web.form.BookForm" />
+		      
+		<form-bean name="bookListForm" type="com.e2.web.form.BookListForm"/>
+	</form-beans>
+	
+	<action-mappings>
+
+	 <action path="/addBookPage"
+		type="org.apache.struts.actions.ForwardAction"
+		parameter="/pages/book/add_book.jsp"/>
+
+	<action
+		path="/addBook"
+		type="com.e2.web.action.AddBookAction"
+		name="bookForm"
+		validate="true"
+		input="/pages/customer/add_book.jsp"
+		>	
+ 
+		<forward name="success" redirect="true" path="/listBook.do"/>
+	</action>
+		
+	<action
+		path="/listBook"
+		type="com.e2.web.action.ListBookAction"
+		name="bookListForm"
+		>	
+ 
+		<forward name="success" path="/pages/book/list_book.jsp"/>
+	</action>	
+      </action-mappings>
+ 
+	<message-resources parameter="struts" />
+ 
+ 	<!-- Spring Struts plugin -->
+ 	<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation"
+		value="/WEB-INF/applicationContext.xml" />
+  	</plug-in>
+ 
+</struts-config>
