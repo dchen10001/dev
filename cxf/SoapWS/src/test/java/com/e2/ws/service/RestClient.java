@@ -15,6 +15,7 @@ public class RestClient {
     private static final String addURL = "http://localhost:8080/SoapWS/services/bookShelfServiceRest/bookService/addbook"; 
 
 	public static void main(String[] args) {
+
 		RestClient client = new RestClient();
 		try {
 			client.addBook("Foundation and Earth", "Issac Asimov");

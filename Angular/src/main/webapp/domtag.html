@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  <title>AngularJS First Application</title>
+  <script src="js/angular.js"></script>
+  <script src="js/domtag.js"></script>
+</head>
+<body>
+	<h2>AngularJS DOM TAG Application</h2>
+	<div ng-app="domtag">
+		<input type="checkbox" ng-model="enableDisableButton">Disable Button
+		<br>
+		<button ng-disabled="enableDisableButton">Click Me!</button>
+		<br><br>
+		<input type="checkbox" ng-model="showHide1">Show Button
+		<br>
+		<button ng-show="showHide1">Click Me!</button>	
+		<br><br>
+		<input type="checkbox" ng-model="showHide2">Hide Button
+		<br>
+		<button ng-hide="showHide2">Click Me!</button>
+		<br><br>
+		<button ng-click="clickCounter = clickCounter + 1">Click Me!</button>
+		<br>
+		<p>Total click: {{ clickCounter }}</p></td>
+		<br>
+	</div>
+</body>
+</html>

@@ -1,5 +1,6 @@
 package com.e2.ws.service;
 
+import javax.jws.Oneway;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -17,4 +18,7 @@ public interface SoapBookShelfService {
 	
 	@WebMethod(operationName = "getBook") 
 	public  BookVO getBook(@WebParam(name = "title", mode = Mode.IN)String title); 
+	
+	@Oneway
+	public void oneWayCall(@WebParam(name = "title", mode = Mode.IN)String title);
 }

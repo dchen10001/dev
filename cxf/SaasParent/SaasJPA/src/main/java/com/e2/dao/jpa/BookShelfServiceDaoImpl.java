@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.e2.dao.BookShelfServiceDao;
 import com.e2.domain.Book;
+import com.e2.domain.Employee;
 
 @Repository("bookShelfServiceDaoImpl")
 public class BookShelfServiceDaoImpl implements BookShelfServiceDao {
@@ -20,6 +21,12 @@ public class BookShelfServiceDaoImpl implements BookShelfServiceDao {
 	
 	@Override
 	public long persisten(Book book) {
+		try {
+		TypedQuery<Employee> query = entityManager.createNamedQuery("getAllEmploy", Employee.class);
+		List<Employee> ls = query.getResultList();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 		entityManager.persist(book);
 		entityManager.flush();
 		return book.getBookId();

@@ -39,4 +39,12 @@ public class SoapBookShelfServiceImpl implements SoapBookShelfService {
 		return bookVO;
 	}
 
+	@Override
+	public void oneWayCall(String title) {
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 }

@@ -17,8 +17,8 @@
 		<cxf.version>2.7.17</cxf.version>
 		<!-- <cxf.version>2.7.9</cxf.version> <spring.version>3.0.7.RELEASE</spring.version> -->
 		<spring.version>4.1.7.RELEASE</spring.version>
-
-		<hibernate.version>4.3.4.Final</hibernate.version>
+		<activemq.version>5.4.2</activemq.version>
+		<hibernate.version>4.3.5.Final</hibernate.version>
 		<log4j.version>1.2.17</log4j.version>
 		<org.slf4j.version>1.5.2</org.slf4j.version>
 	</properties>
@@ -168,7 +168,12 @@
 				<artifactId>spring-orm</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-
+	        <dependency>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-jms</artifactId>
+	            <version>${spring.version}</version>
+	        </dependency> 
+        
 			<!-- AOP -->
 			<dependency>
 				<groupId>aopalliance</groupId>
@@ -342,7 +347,25 @@
 			  		<groupId>org.springframework</groupId>
 			  	</exclusion>
 			  </exclusions>
-			</dependency>		
+			</dependency>	
+			
+			<!--  activemq  -->
+			<dependency>
+				<groupId>org.apache.activemq</groupId>
+				<artifactId>activemq-core</artifactId>
+				<version>${activemq.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.activemq</groupId>
+				<artifactId>activemq-pool</artifactId>
+				<version>${activemq.version}</version>
+			</dependency>
+			<!--  activeMQ spring support -->
+			<dependency>
+				<groupId>org.apache.xbean</groupId>
+				<artifactId>xbean-spring</artifactId>
+				<version>4.3</version>
+			</dependency>				
 		</dependencies>
 		
 	</dependencyManagement>
@@ -395,6 +418,11 @@
 			<groupId>postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.xbean</groupId>
+			<artifactId>xbean-spring</artifactId>
+		</dependency>			
 	</dependencies>
 	<modules>
 		<module>SaasJPA</module>
